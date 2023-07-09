@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置mybatis的log实现为LOG4J -->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <environments default="test">
+        <environment id="test">
+            <!--配置事务管理，采用JDBC的事务管理  -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- POOLED:mybatis自带的数据源，JNDI:基于tomcat的数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+
+                          value="jdbc:mysql://localhost:3306/project-flight?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="password"/>
+            </dataSource>
+        </environment>
+    </environments>   
+    <!--配置mapper接口所在的位置 -->
+    <mappers>     
+        <package name="com.example.flight.mapper"/>
+    </mappers>
+</configuration>
